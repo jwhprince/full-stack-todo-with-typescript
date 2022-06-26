@@ -1,12 +1,18 @@
-export const TodoItem = () => {
+import { ITodo } from "../../types/types";
+
+interface ITodoProps {
+    todo: ITodo;
+}
+
+export const TodoItem = ({ todo }: ITodoProps) => {
     return (
-        <li>
+        <li className='list-group-item d-flex justify-content-between'>
             <div className="">
-               <span></span>
+               <span>{todo.title}</span>
             </div>
             <div>
-                <button className="btn btn-primary">Изменить</button>
-                <button className="btn btn-success">Завершить</button>
+                <button style={{ marginRight: '10px' }} className="btn btn-primary">Изменить</button>
+                <button style={{ marginRight: '10px' }}  className="btn btn-success">Завершить</button>
                 <button className="btn btn-danger">Удалить</button>
             </div>
         </li>

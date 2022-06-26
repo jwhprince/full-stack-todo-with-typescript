@@ -40,7 +40,7 @@ export class TodoController {
   }
 
   @Delete(':id')
-  deleteTodo(o, @Param('id') id: string) {
+  deleteTodo(@Param('id') id: string) {
     return this.todoService.remove(id);
   }
 }

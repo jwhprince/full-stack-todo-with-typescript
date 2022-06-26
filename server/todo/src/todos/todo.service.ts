@@ -24,7 +24,7 @@ export class TodoService {
   }
 
   create(createTodo: CreateTodo): Promise<Todo> {
-    const todo = Todo();
+    const todo = new Todo();
 
     todo.title = createTodo.title;
     todo.done = createTodo.done;

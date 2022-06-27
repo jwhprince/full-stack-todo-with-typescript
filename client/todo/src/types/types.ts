@@ -3,7 +3,8 @@ export enum ITodoActionTypes {
     CREATE_TODO = 'CREATE_TODO',
     GET_TODOS = 'GET_TODOS',
     GET_TODOS_SUCCESS = 'GET_TODOS_SUCCESS',
-    CHANGE_TODO = 'CHANGE_TODO',
+    EDIT_TODO = 'EDIT_TODO',
+    EDIT_TODO_SUCCESS = 'EDIT_TODO_SUCCESS',
     COMPLETE_TODO = 'COMPLETE_TODO',
     COMPLETE_TODO_SUCCESS = 'COMPLETE_TODO_SUCCESS',
     DELETE_TODO = 'DELETE_TODO',
@@ -22,6 +23,12 @@ export interface ITodoState {
 
 export interface ITodoReducer {
     todoReducer: ITodoState
+}
+
+export interface IEditTodo {
+    title: string,
+    id: string,
+    done: boolean
 }
 
 export interface ICreateAction {
@@ -44,6 +51,12 @@ export interface ICompleteAction<T> {
     payload: T
 }
 
+export interface IEditAction {
+    type: ITodoActionTypes.EDIT_TODO_SUCCESS | ITodoActionTypes.EDIT_TODO;
+    payload: IEditTodo
+    id: string
+}
 
 
-export type ITodoAction = ICreateAction | IDeleteAction | IGetAction | ICompleteAction<ITodo | string>
+
+export type ITodoAction = ICreateAction | IDeleteAction | IGetAction | ICompleteAction<ITodo | string> | IEditAction

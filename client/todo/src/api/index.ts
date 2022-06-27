@@ -19,4 +19,9 @@ export class TodoApi {
         await axios.patch(`http://localhost:3000/todos/${todo.id}`, todo);
     }
 
+    static async editTodo(todo: Partial<ITodo>): Promise<ITodo> {
+       const res = await axios.patch(`http://localhost:3000/todos/${todo.id}`, todo);
+       return res.data[1][0]
+    }
+
 }

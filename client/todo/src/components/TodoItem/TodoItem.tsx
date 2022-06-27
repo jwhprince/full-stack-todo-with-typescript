@@ -29,10 +29,11 @@ export const TodoItem = ({ todo, deleteTodo, doneTodo, changeTodo }: ITodoProps)
 
     return (
         <li className={
-            `list-group-item d-flex justify-content-between align-items-center
+            `todo-item list-group-item d-flex justify-content-between align-items-center
             ${todo.done ? 'list-group-item-success' : ''}`
             }>
             <div 
+            className='todo-text'
             onKeyPress={handleSubmit} 
             > 
             {isTodoEdit 
@@ -40,10 +41,10 @@ export const TodoItem = ({ todo, deleteTodo, doneTodo, changeTodo }: ITodoProps)
         : <span className={`${todo.done ? 'title-done' : ''}`}>{todo.title}</span> }
                
             </div>
-            <div>
-                <button onClick={handleTodoEdit} style={{ marginRight: '10px' }} className="btn btn-primary">Изменить</button>
-                <button onClick={handleComplete} style={{ marginRight: '10px' }}  className="btn btn-success">Завершить</button>
-                <button onClick={ handleDelete } className="btn btn-danger">Удалить</button>
+            <div className="todo-btns">
+                <button onClick={handleTodoEdit} className="todo-btn btn btn-primary">Change</button>
+                <button onClick={handleComplete} className="todo-btn btn btn-success">Finish</button>
+                <button onClick={ handleDelete } className="todo-btn btn btn-danger">Delete</button>
             </div>
         </li>
     )

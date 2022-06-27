@@ -14,7 +14,7 @@ export const TodoForm = () => {
        event.preventDefault()
 
        if (!title.trim()) {
-         dispatch(showAlert('Название дела не может быть пустым', 'warning'))
+         dispatch(showAlert('Task name cannot be empty', 'warning'))
          return
        }
        
@@ -33,14 +33,14 @@ export const TodoForm = () => {
       {alertState.alertText.length > 0 && <Alert props={alertState} />}
          <div className="mb-3 d-flex align-items-end justify-content-between">
          <div className="form-group" style={{width: '92%', marginRight: '10px'}}>
-           <label htmlFor="" className="form-label">Введите название дела</label>
+           <label htmlFor="" className="form-label">Add new task</label>
            <input
                onChange={handleChangeInputValue} 
                type="text"
                className="form-control"
             />
          </div>
-            <button className="btn btn-dark">создать</button>
+            <button className="btn btn-dark">create</button>
          </div>
     </form>
     )

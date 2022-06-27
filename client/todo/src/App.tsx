@@ -20,7 +20,7 @@ function App() {
       <section>
         <div className="container pt-3">
            <TodoForm />
-           <h2 className='pt-3'> Новые дела </h2>
+           <h2 className='pt-3'> New Tasks </h2>
            <TodoList />
         </div>
       </section>

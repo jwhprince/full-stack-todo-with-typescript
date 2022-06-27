@@ -2,9 +2,11 @@ import { ITodo } from "../../types/types";
 
 interface ITodoProps {
     todo: ITodo;
+    deleteTodo: (arg0: string) => void;
 }
 
-export const TodoItem = ({ todo }: ITodoProps) => {
+export const TodoItem = ({ todo, deleteTodo }: ITodoProps) => {
+    const handleDelete = () => deleteTodo(todo.id) 
     return (
         <li className='list-group-item d-flex justify-content-between'>
             <div className="">
@@ -13,7 +15,7 @@ export const TodoItem = ({ todo }: ITodoProps) => {
             <div>
                 <button style={{ marginRight: '10px' }} className="btn btn-primary">Изменить</button>
                 <button style={{ marginRight: '10px' }}  className="btn btn-success">Завершить</button>
-                <button className="btn btn-danger">Удалить</button>
+                <button onClick={ handleDelete } className="btn btn-danger">Удалить</button>
             </div>
         </li>
     )

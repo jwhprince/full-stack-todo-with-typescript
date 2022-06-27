@@ -1,5 +1,12 @@
 import { ITodoActionTypes } from "../../types/types"
 
+export const getTodos = () => {
+    return {
+        type: ITodoActionTypes.GET_TODOS,
+        
+    }
+}
+
 export const createTodo = (payload: string) => {
     return {
         type: ITodoActionTypes.CREATE_TODO,
@@ -13,3 +20,14 @@ export const deleteTodo = (payload: string) => {
         payload
     }
 }
+
+export const completeTodo = (id: string, done: boolean) => {
+    return {
+        type: ITodoActionTypes.COMPLETE_TODO,
+        payload: {
+            id,
+            done
+        }
+    }
+}
+

@@ -1,21 +1,25 @@
 import { ChangeEvent, FormEvent, useState } from "react"
-import { useDispatch } from "react-redux"
-import { createTodo } from "../../redux/actions"
+import { useDispatch, useSelector } from "react-redux"
+import { createTodo, showAlert } from "../../redux/actions"
+import { IAlertReducer } from "../../types/types"
+import { Alert } from "../Alert/Alert"
 
 
 export const TodoForm = () => {
     const [title, setTitle] = useState('')
+    const alertState = useSelector((state: IAlertReducer) => state.alertReducer)
     const dispatch = useDispatch()
     
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
        event.preventDefault()
 
        if (!title.trim()) {
+         dispatch(showAlert('Название дела не может быть пустым', 'warning'))
          return
        }
        
       
-       // @ts-ignore
+       
        dispatch(createTodo(title))
        setTitle('')
     }
@@ -25,7 +29,9 @@ export const TodoForm = () => {
     }
     
     return (
-    <form onSubmit={handleSubmit} className="mb-3 d-flex align-items-end justify-content-between">
+    <form onSubmit={handleSubmit} >
+      {alertState.alertText.length > 0 && <Alert props={alertState} />}
+         <div className="mb-3 d-flex align-items-end justify-content-between">
          <div className="form-group" style={{width: '92%', marginRight: '10px'}}>
            <label htmlFor="" className="form-label">Введите название дела</label>
            <input
@@ -35,6 +41,7 @@ export const TodoForm = () => {
             />
          </div>
             <button className="btn btn-dark">создать</button>
+         </div>
     </form>
     )
 }
